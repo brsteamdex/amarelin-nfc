@@ -5,7 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>Pokémon Yellow</title>
   <style>
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      user-select: none;
+    }
     html, body {
       margin: 0;
       padding: 0;
@@ -13,7 +18,7 @@
       height: 100%;
       background-color: #000;
       overflow: hidden;
-      touch-action: none; /* Evita zoom e rolagem acidental no toque */
+      touch-action: none;
     }
     #game-container {
       width: 100vw;
@@ -30,13 +35,17 @@
 
   <script type="text/javascript">
     EJS_player = '#game-container';
-    EJS_core = 'gb'; 
-    EJS_gameUrl = 'Amarelin.gb'; // Garanta que o nome do arquivo da ROM está exato
+    EJS_core = 'gb';
+    
+    // Nome exato da ROM (com A maiúsculo)
+    EJS_gameUrl = 'Amarelin.gb';
+    
+    // Servidor seguro de assets do EmulatorJS
     EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/';
     
-    // Configurações focadas em dispositivos móveis
-    EJS_startOnLoaded = false; // Exige toque inicial para ativar áudio/controles no mobile
-    EJS_color = '#eab308';
+    // Configurações otimizadas para Celular e PC
+    EJS_startOnLoaded = false; // Exige um toque/clique para dar permissão de áudio no celular
+    EJS_color = '#eab308';    // Cor temática do Pikachu
   </script>
   
   <script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
