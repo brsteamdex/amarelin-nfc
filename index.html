@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Pokémon Yellow Version</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #000;
+      overflow: hidden;
+      font-family: sans-serif;
+    }
+    #game-container {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="game-container"></div>
+
+  <script type="text/javascript">
+    // Configurações do EmulatorJS
+    EJS_player = '#game-container';
+    EJS_core = 'gb'; // Core do Game Boy (.gb)
+    EJS_gameUrl = 'Amarelin.gb'; // Nome exato do arquivo da sua ROM no GitHub
+    EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/';
+    
+    // Opções para otimizar a experiência mobile / NFC
+    EJS_startOnLoaded = true; // Inicia o jogo automaticamente ao carregar
+    EJS_color = '#eab308';    // Cor de destaque amarela (combinando com o Pikachu)
+  </script>
+  
+  <script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
+
+</body>
+</html>
