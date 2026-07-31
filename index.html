@@ -7,13 +7,10 @@
   <style>
     * {
       box-sizing: border-box;
-      -webkit-touch-callout: none;
-      -webkit-user-select: none;
-      user-select: none;
-    }
-    html, body {
       margin: 0;
       padding: 0;
+    }
+    html, body {
       width: 100%;
       height: 100%;
       background-color: #000;
@@ -36,16 +33,15 @@
   <script type="text/javascript">
     EJS_player = '#game-container';
     EJS_core = 'gb';
-    
-    // Nome exato da ROM (com A maiúsculo)
     EJS_gameUrl = 'Amarelin.gb';
-    
-    // Servidor seguro de assets do EmulatorJS
     EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/';
     
-    // Configurações otimizadas para Celular e PC
-    EJS_startOnLoaded = false; // Exige um toque/clique para dar permissão de áudio no celular
-    EJS_color = '#eab308';    // Cor temática do Pikachu
+    // Força o emulador a iniciar direto assim que baixar a ROM
+    EJS_startOnLoaded = true;
+    
+    // Otimizações de layout e interface
+    EJS_color = '#eab308';
+    EJS_defaultFullscreen = false;
   </script>
   
   <script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
