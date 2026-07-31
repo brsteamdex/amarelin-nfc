@@ -14,37 +14,97 @@
       width: 100%;
       height: 100%;
       background-color: #000;
+      color: #fff;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       overflow: hidden;
-      touch-action: none;
     }
-    #game-container {
-      width: 100vw;
-      height: 100vh;
+
+    /* Tela de Boas-Vindas / Banner NFC */
+    #start-screen {
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
+      height: 100vh;
+      width: 100vw;
+      text-align: center;
+      padding: 20px;
+      background: radial-gradient(circle, #2a2a2a 0%, #000000 100%);
+    }
+
+    .title {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #facc15; /* Amarelo Pikachu */
+      text-shadow: 0 0 10px rgba(250, 204, 21, 0.4);
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      font-size: 0.9rem;
+      color: #a1a1aa;
+      margin-bottom: 30px;
+    }
+
+    .btn-play {
+      background-color: #facc15;
+      color: #000;
+      border: none;
+      padding: 16px 36px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(250, 204, 21, 0.3);
+      transition: transform 0.2s, background-color 0.2s;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .btn-play:active {
+      transform: scale(0.95);
+      background-color: #eab308;
+    }
+
+    /* Container do Jogo (Invisível no início) */
+    #game-container {
+      display: none;
+      width: 100vw;
+      height: 100vh;
     }
   </style>
 </head>
 <body>
 
+  <!-- Tela Inicial do Cartucho NFC -->
+  <div id="start-screen">
+    <div class="title">POKÉMON YELLOW</div>
+    <div class="subtitle">Special Pikachu Edition</div>
+    <button class="btn-play" onclick="startGame()">▶ JOGAR AGORA</button>
+  </div>
+
+  <!-- Área do Emulador -->
   <div id="game-container"></div>
 
   <script type="text/javascript">
-    EJS_player = '#game-container';
-    EJS_core = 'gb';
-    EJS_gameUrl = 'Amarelin.gb';
-    EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/';
-    
-    // Força o emulador a iniciar direto assim que baixar a ROM
-    EJS_startOnLoaded = true;
-    
-    // Otimizações de layout e interface
-    EJS_color = '#eab308';
-    EJS_defaultFullscreen = false;
+    function startGame() {
+      // 1. Esconde a tela inicial e exibe o container do jogo
+      document.getElementById('start-screen').style.display = 'none';
+      document.getElementById('game-container').style.display = 'block';
+
+      // 2. Configura o EmulatorJS
+      window.EJS_player = '#game-container';
+      window.EJS_core = 'gb';
+      window.EJS_gameUrl = 'Amarelin.gb';
+      window.EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/';
+      window.EJS_startOnLoaded = true;
+      window.EJS_color = '#facc15';
+
+      // 3. Injeta o script do emulador após o clique do usuário
+      var loader = document.createElement('script');
+      loader.src = 'https://cdn.emulatorjs.org/stable/data/loader.js';
+      document.body.appendChild(loader);
+    }
   </script>
-  
-  <script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
 
 </body>
 </html>
